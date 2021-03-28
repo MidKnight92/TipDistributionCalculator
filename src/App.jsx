@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { useState } from "react";
 import TipForm from "./TipForm";
+import TipAmount from "./TipAmount";
 
 export default function App() {
   const [formData, setFormData] = useState({
@@ -65,29 +66,10 @@ export default function App() {
         calulateTipPayOut={calulateTipPayOut}
       />
       {formData.showPayOut && (
-        <>
-          <p
-            style={{
-              fontWeight: "bolder",
-              color: "black",
-              textAlign: "center",
-              fontSize: "1.5rem"
-            }}
-          >
-            Employee Tip Pay Out: ${formData.payOut}
-          </p>
-          <p
-            style={{
-              color: "black",
-              textAlign: "center",
-              fontSize: "1 rem"
-            }}
-          >
-            {formData.hourlyTipRate
-              ? `Tip Rate Per Hour $${formData.hourlyTipRate.toFixed(2)}`
-              : ""}
-          </p>
-        </>
+        <TipAmount
+          payOut={formData.payOut}
+          hourlyTipRate={formData.hourlyTipRate}
+        />
       )}
     </Container>
   );

@@ -10,12 +10,13 @@ export default function TipForm({ formData, setFormData }) {
     ) {
       let hrTipRate = formData.totalTipAmount / formData.totalTippableHours;
       let tipPayOut = Math.round(hrTipRate * formData.hoursWorked);
-      setFormData({
+      const newFormData = {
         ...formData,
         hourlyTipRate: hrTipRate,
         payOut: tipPayOut,
         showPayOut: true
-      });
+      };
+      setFormData(newFormData);
     }
   };
   const handleChange = (e) => {

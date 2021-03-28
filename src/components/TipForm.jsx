@@ -35,17 +35,11 @@ export default function TipForm({
           type="text"
           placeholder="000.00 hrs"
           name="totalTippableHours"
-          required
         />
       </Form.Group>
       <Form.Group controlId="formHoursWorked">
         <Form.Label>Total Hours Worked by Employee:</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="000.00 hrs"
-          name="hoursWorked"
-          required
-        />
+        <Form.Control type="text" placeholder="000.00 hrs" name="hoursWorked" />
       </Form.Group>
       <Button variant="success" type="button" onClick={calulateTipPayOut}>
         Calculate

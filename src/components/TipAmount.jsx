@@ -18,7 +18,7 @@ export default function TipAmount({ payOut, hourlyTipRate }) {
           fontSize: "1 rem"
         }}
       >
-        {hourlyTipRate ? `Tip Rate Per Hour $${hourlyTipRate.toFixed(2)}` : ""}
+        {`Tip Rate Per Hour: $${hourlyTipRate.toFixed(2)}`}
       </p>
     </>
   );

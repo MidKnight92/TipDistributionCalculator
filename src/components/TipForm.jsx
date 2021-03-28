@@ -25,6 +25,7 @@ export default function TipForm({ formData, setFormData }) {
       let parsedValue = parseFloat(e.target.value) || 0;
       const newFormData = {
         ...formData,
+        ...{ showPayOut: false },
         [e.target.name]: parsedValue
       };
       setFormData(newFormData);

@@ -1,12 +1,48 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 
-export default function TipForm({
-  handleClick,
-  handleChange,
-  calulateTipPayOut,
-  hourlyRate
-}) {
+export default function TipForm({ formData, setFormData }) {
+  const calulateTipPayOut = () => {
+    if (
+      formData.totalTipAmount &&
+      formData.totalTippableHours &&
+      formData.hoursWorked
+    ) {
+      let hrTipRate = formData.totalTipAmount / formData.totalTippableHours;
+      let tipPayOut = Math.round(hrTipRate * formData.hoursWorked);
+      setFormData({
+        ...formData,
+        ...{
+          hourlyTipRate: hrTipRate,
+          payOut: tipPayOut,
+          showPayOut: true
+        }
+      });
+    }
+  };
+  const handleChange = (e) => {
+    try {
+      let parsedValue = parseFloat(e.target.value) || 0;
+      const newFormData = {
+        ...formData,
+        [e.target.name]: parsedValue
+      };
+      setFormData(newFormData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleClick = () => {
+    setFormData({
+      totalTipAmount: 0,
+      totalTippableHours: 0,
+      hourlyTipRate: 0,
+      hoursWorked: 0,
+      payOut: 0,
+      showPayOut: false
+    });
+  };
   return (
     <Form
       onChange={handleChange}

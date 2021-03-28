@@ -22,7 +22,7 @@ export default function TipForm({ formData, setFormData }) {
   };
   const handleChange = (e) => {
     try {
-      let parsedValue = parseFloat(e.target.value) || 0;
+      let parsedValue = parseFloat(e.target.value.replace(/\s/g, "")) || 0;
       const newFormData = {
         ...formData,
         ...{ showPayOut: false },
